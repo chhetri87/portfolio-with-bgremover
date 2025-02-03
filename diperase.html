@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DipErase - Background Removal Made Easy</title>
+    <link rel="icon" href="bg/assets/icon.png">
+    <link rel="stylesheet" href="bg/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("Ix7CsnX8ufzZ0YNtW");
+        })();
+    </script>
+</head>
+<body class="light-theme">
+    <header>
+        <div class="logo">
+            <h1>
+                <div class="logo-icon">
+                    <i class="fas fa-eraser"></i>
+                    <span class="eraser-effect"></span>
+                </div>
+                DipErase
+            </h1>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#samples">Samples</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-controls">
+            <button id="themeToggle" class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section id="home">
+            <div class="hero">
+                <h2>Your Background, Gone in Seconds</h2>
+                <p>Seamless, Fast, Effortless.</p>
+            </div>
+
+            <div class="upload-container" id="dropZone">
+                <div class="upload-content">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag and drop your image here</p>
+                    <p>or</p>
+                    <button id="uploadBtn" class="upload-btn">Choose File</button>
+                    <input type="file" id="fileInput" accept="image/*" hidden>
+                </div>
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+
+            <div class="image-comparison" id="imageComparison" style="display: none;">
+                <div class="comparison-slider">
+                    <img id="originalImage" src="" alt="Original Image">
+                    <img id="processedImage" src="" alt="Processed Image">
+                    <div class="slider-handle"></div>
+                </div>
+                <button id="downloadBtn" class="download-btn">
+                    <i class="fas fa-download"></i> Download
+                </button>
+            </div>
+        </section>
+
+        <section id="about" class="page-section">
+            <h2>About DipErase</h2>
+            <div class="about-content">
+                <p>DipErase is a powerful background removal tool that uses advanced AI technology to remove backgrounds from your images instantly. Perfect for e-commerce, social media, or professional use.</p>
+                <div class="features">
+                    <div class="feature">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Fast Processing</h3>
+                        <p>Remove backgrounds in seconds</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-magic"></i>
+                        <h3>AI Powered</h3>
+                        <p>Precise and accurate results</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-download"></i>
+                        <h3>Easy Download</h3>
+                        <p>Get your images instantly</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="samples" class="page-section">
+            <h2>Sample Gallery</h2>
+            <div class="sample-gallery">
+                <div class="sample-item">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330" alt="Original" class="original">
+                    <img src="https://i.ibb.co/VxKJ8Xm/portrait-removed.png" alt="Processed" class="processed">
+                    <button class="try-sample" data-sample="sample1">Try with this image</button>
+                </div>
+                <div class="sample-item">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff" alt="Original" class="original">
+                    <img src="https://i.ibb.co/C2zk0bX/product-removed.png" alt="Processed" class="processed">
+                    <button class="try-sample" data-sample="sample2">Try with this image</button>
+                </div>
+                <div class="sample-item">
+                    <img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77" alt="Original" class="original">
+                    <img src="https://i.ibb.co/vX9vx6R/shoe-removed.png" alt="Processed" class="processed">
+                    <button class="try-sample" data-sample="sample3">Try with this image</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="page-section">
+            <h2>Contact Us</h2>
+            <div class="contact-content">
+                <form id="contactForm" class="contact-form" onsubmit="return sendEmail(event)">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" required placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required placeholder="Your Email">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" required placeholder="Your Message"></textarea>
+                    </div>
+                    <div id="submitStatus" class="submit-status"></div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About DipErase</h3>
+                <p>DipErase is an advanced AI-powered background removal tool designed to make your image editing experience seamless and professional.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#samples">Samples</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-phone"></i>+977 9766459738</li>
+                    <li><i class="fas fa-envelope"></i>contact@dipeshbham.com.np</li>
+                    <li><i class="fas fa-map-marker-alt"></i>Bagabagar, Kathmandu Nepal</li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/kharayoo4" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.youtube.com/@dipeshey" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.instagram.com/dipeshkshettry" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 DipErase. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="bg/js/config.js"></script>
+    <script src="bg/js/themeToggle.js"></script>
+    <script src="bg/js/main.js"></script>
+    <script src="bg/js/contact.js"></script>
+    <script src="bg/js/mobileMenu.js"></script>
+    <script src="bg/js/footerNav.js"></script>
+</body>
+</html> 
